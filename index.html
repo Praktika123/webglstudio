@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+	<script>
+		function setCookie(cname,cvalue,exdays) {
+		  var d = new Date();
+		  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+		  var expires = "expires=" + d.toGMTString();
+		  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+		}
+		
+		function getCookie(cname) {
+		  var name = cname + "=";
+		  var decodedCookie = decodeURIComponent(document.cookie);
+		  var ca = decodedCookie.split(';');
+		  for(var i = 0; i < ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+			  c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+			  return c.substring(name.length, c.length);
+			}
+		  }
+		  return "";
+		}
+		
+		function checkCookie() {
+		  var user=getCookie("username");
+		  if (user != "") {
+			alert("Welcome again " + user);
+		  } else {
+			 user = prompt("Please enter your name:","");
+			 if (user != "" && user != null) {
+			   setCookie("username", user, 30);
+			 }
+		  }
+		}
+		</script>
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<meta property="og:title" content="WebGLStudio" />
+<meta property="og:description" content="Edit 3D on the web" />
+<meta property="og:image" content="" />
+
+<link rel="icon" type="image/png" href="favicon.ico">
+
+<title>WebGLStudio</title>
+	<style type='text/css'></style>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<script type="text/javascript" src="js/extra/jscolor/jscolor.js"></script>
+	<script type="text/javascript" src="js/extra/canvas-to-blob.js"></script>
+	<script type="text/javascript" src="js/extra/litegui.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/litegui.css">
+	<link rel="stylesheet" type="text/css" href="css/litegraph.css">
+
+</head>
+<body class="editor" onload="checkCookie()">
+
+	<script type="text/javascript" src="js/utils/utils.js"></script>
+	<script type="text/javascript" src="js/core.js"></script>
+	<script type="text/javascript">
+		CORE.init();
+	</script>
+</body>
+</html>
