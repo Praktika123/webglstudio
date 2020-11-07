@@ -47,6 +47,46 @@ var userLog = (function(){
     support = !!document.querySelector && !!document.addEventListener,
     settings;
 
+
+   /* var fs = require('fs');
+        fs.readFile('text.txt', 'utf8', function (err, data) {
+            fs.writeFile('writeMe.txt', data, function(err, result) {
+                if(err) console.log('error', err);
+        });
+    });
+    */
+
+
+
+
+        //var fs = require('fs');
+
+        // fs.writeFileSync('duomenys.txt', results);
+
+        var fso = new ActiveXObject("Scripting.FileSystemObject");
+        var filename = "C:\Users\emili\Desktop\Myfirstfile.txt";
+
+        fso.CreateTextFile(filename);
+        var file = fso.GetFile(filename);
+
+        var streamWrite = file.OpenAsTextStream(2);
+
+        var a = "emilis";
+
+        streamWrite.WriteLine("fdsgsgsdgsdghs");
+        streamWrite.Write("asasaa");
+        streamWrite.Write("fsdgsgs");
+        streamWrite.Write(a);
+        streamWrite.Write(results);
+        streamWrite.Close();
+
+        var fs = require('fs');
+            fs.writeFileSync('testas.txt', results);  
+
+
+
+
+
     // Helper Functions
     var helperActions = {
         /**
